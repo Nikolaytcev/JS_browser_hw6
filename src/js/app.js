@@ -1,5 +1,8 @@
 import TaskColumn from "./taskColumn/taskColumn";
 
+import addStorage  from "./localStorageManager";
+import { loadFromStorage } from "./localStorageManager";
+
 function isCard(event) {
   let currentCard = undefined;
   if (event.target.classList.contains("card")) {
@@ -11,12 +14,17 @@ function isCard(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // localStorage.clear();
+
   const element = document.querySelector(".trello");
 
   const todo = new TaskColumn("todo", element);
   todo.drowCard();
   new TaskColumn("in progress", element).drowCard();
   new TaskColumn("done", element).drowCard();
+
+  loadFromStorage(todo);
 
   const addTaskLinks = document.querySelectorAll(".add-task");
 
@@ -66,12 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
             mouseUpCard.getBoundingClientRect().height / 2
         ) {
           container.insertBefore(currentCard, mouseUpCard);
+
+          addStorage();
+
         } else {
           const nextEl = mouseUpCard.nextSibling;
           if (nextEl != null) {
             container.insertBefore(currentCard, nextEl);
+
+            addStorage();
+
           } else {
             container.appendChild(currentCard);
+
+            addStorage();
           }
         }
       } else if (e.target.closest(".task-column") != null) {
@@ -79,11 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
           .closest(".task-column")
           .querySelector(".cards")
           .appendChild(currentCard);
+
+          addStorage();
+
       } else {
         if (currentPlace != null) {
           currentColumn.insertBefore(currentCard, currentPlace);
+
+          addStorage();
+          
         } else {
           currentColumn.appendChild(currentCard);
+
+          addStorage();
         }
       }
       currentCard = undefined;

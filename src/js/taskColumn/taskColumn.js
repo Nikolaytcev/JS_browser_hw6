@@ -1,5 +1,6 @@
 import "./taskColumn.css";
 import image from "../../../icons/free-icon-cross-sign-8212742.png";
+import addStorage from "../localStorageManager";
 
 export default class TaskColumn {
   constructor(title, element) {
@@ -27,6 +28,21 @@ export default class TaskColumn {
     this.element.appendChild(card);
   }
 
+  createCard(text) {
+    const card = document.createElement("li");
+    card.classList.add("card");
+    const cardText = document.createElement("p");
+    cardText.classList.add("card-text");
+    const closeTask = document.createElement("img");
+    closeTask.classList.add("close-task");
+    closeTask.src = image;
+    closeTask.style.display = "none";
+    cardText.textContent = text;
+    card.appendChild(cardText);
+    card.appendChild(closeTask);
+    return card;
+  };
+
   addTask(column, target) {
     const task = document.createElement("textarea");
     task.classList.add("task-text");
@@ -45,23 +61,14 @@ export default class TaskColumn {
 
     addBtn.addEventListener("click", () => {
       if (!task.value == "") {
-        const card = document.createElement("li");
-        card.classList.add("card");
-        const cardText = document.createElement("p");
-        cardText.classList.add("card-text");
-        const closeTask = document.createElement("img");
-        closeTask.classList.add("close-task");
-        closeTask.src = image;
-        closeTask.style.display = "none";
-        cardText.textContent = task.value;
-        card.appendChild(cardText);
-        card.appendChild(closeTask);
-        column.querySelector(".cards").appendChild(card);
-
+        column.querySelector(".cards").appendChild(this.createCard(task.value));
         addBtn.remove();
         close.remove();
         task.remove();
         target.style.display = "block";
+
+        addStorage();
+        
       }
     });
 
@@ -76,7 +83,11 @@ export default class TaskColumn {
   closeCard(card) {
     const closeSign = card.querySelector(".close-task");
     closeSign.addEventListener("click", () => {
+      const column = card.closest('.task-column');
       card.remove();
+
+      addStorage();
+
     });
   }
 }
