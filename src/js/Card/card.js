@@ -2,6 +2,7 @@ import "./card.css";
 import image from "../../../icons/free-icon-cross-sign-8212742.png";
 
 export default class Card {
+  
   createCard(text) {
     const card = document.createElement("li");
     card.classList.add("card");

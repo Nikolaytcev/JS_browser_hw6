@@ -4,8 +4,7 @@ import addStorage from "./localStorageManager";
 
 
 export default class Controller {
-    constructor(container) {
-        this.container = container;
+    constructor() {
         this.currentCard = undefined;
         this.currentColumn = undefined;
         this.nextElement = undefined;
