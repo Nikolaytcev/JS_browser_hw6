@@ -9,6 +9,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousemove", controller.onMouseMove);
   document.addEventListener("mousedown", controller.onMouseDown);
   document.addEventListener("mouseup", controller.onMouseUp);
-  document.addEventListener("click", controller.onMouseClick);
 });
 
