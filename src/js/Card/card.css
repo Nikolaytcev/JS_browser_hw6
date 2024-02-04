@@ -1,0 +1,44 @@
+.card {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    word-break: break-all;
+    padding: 0 5px 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.close-card {
+    width: 20px;
+    height: 20px;
+}
+
+.close-card:hover {
+    cursor: pointer;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card.dragget {
+    position: absolute;
+    width: 20%;
+    z-index: 999;
+    pointer-events: none;
+    /* cursor: grab; */
+}
+
+.stub {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(235, 229, 228);
+    height: 50px;
+}
