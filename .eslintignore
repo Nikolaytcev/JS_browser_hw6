@@ -3,3 +3,5 @@ coverage
 doc
 webpack.*.js
 e2e
+addingCard.js
+controller.js

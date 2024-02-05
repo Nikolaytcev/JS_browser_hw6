@@ -10,4 +10,3 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousedown", controller.onMouseDown);
   document.addEventListener("mouseup", controller.onMouseUp);
 });
-
