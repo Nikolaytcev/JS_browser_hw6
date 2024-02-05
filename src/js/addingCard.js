@@ -1,4 +1,4 @@
-import image from "../../icons/free-icon-cross-sign-8212742.png"
+import image from "../icons/free-icon-cross-sign-8212742.png"
 import Card from "./Card/card";
 import addStorage from "./localStorageManager";
 

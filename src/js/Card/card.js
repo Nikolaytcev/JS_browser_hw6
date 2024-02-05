@@ -1,5 +1,5 @@
 import "./card.css";
-import image from "../../../icons/free-icon-cross-sign-8212742.png";
+import image from "../../icons/free-icon-cross-sign-8212742.png";
 
 export default class Card {
   createCard(text) {
